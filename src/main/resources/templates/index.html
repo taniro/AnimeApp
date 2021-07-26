@@ -6,7 +6,7 @@
 </head>
 <body>
 		<h2>Lista de Animes</h2>
-		<a href="/cadastrar">Cadastrar anime</a>
+		<a href="/cadastro">Cadastrar anime</a>
 		<br />
 		<table>
 			<tr>
@@ -17,13 +17,15 @@
 				<th>Epis</th>
 				<th>Classificacao</th>
 			</tr>
-			<tr th:each=" anime : ${listaAnimes}">
+			<tr th:each="anime : ${listaAnimes}">
 				<td th:text="${anime.id}">ID</td>
 				<td th:text="${anime.genero}">Genero</td>
 				<td th:text="${anime.titulo}">Titulo</td>
 				<td th:text="${anime.anolancamento}">Ano</td>
 				<td th:text="${anime.episodios}">Epis</td>
 				<td th:text="${anime.classificacao}">Classificacao</td>
+				<td><a th:href="@{'/deletar/' + ${anime.id}}" >Deletar </a></td>
+				<td><a th:href="@{'/editar/' + ${anime.id}}" >Editar </a></td>
 			</tr>
 		</table>
 </body>

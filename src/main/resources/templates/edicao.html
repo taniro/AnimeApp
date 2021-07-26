@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Edição de Animes</h2>
+    <form method="post" th:object="${anime}" th:action="@{/salvar}">
+      <input type="text" readonly name="id" th:field="*{id}"> <br />
+      Genero: <input type="text" name="genero" th:field="*{genero}"> <br />
+      Título: <input type="text" name="titulo" th:field="*{titulo}"> <br />
+      Lancamento: <input type="text" name="anoLancamento" th:field="*{anolancamento}"> <br />
+      Temporadas: <input type="text" name="temporadas" th:field="*{temporadas}"> <br />
+      Episodios: <input type="text" name="episodios" th:field="*{episodios}"> <br />
+      Classificacao: <input type="text" name="classificacao" th:field="*{classificacao}"> <br />
+      <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
