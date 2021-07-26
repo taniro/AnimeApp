@@ -11,7 +11,9 @@
 
         Genero: <input type="text" name="genero" th:field="*{genero}"> <br />
         Título: <input type="text" name="titulo" th:field="*{titulo}"> <br />
-        Lancamento: <input type="text" name="anoLancamento" th:field="*{anolancamento}"> <br />
+        <p th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"> </p>
+        Lancamento: <input type="text" name="anolancamento" th:field="*{anolancamento}"> <br />
+        <p th:if="${#fields.hasErrors('anolancamento')}" th:errors="*{anolancamento}"> </p>
         Temporadas: <input type="text" name="temporadas" th:field="*{temporadas}"> <br />
         Episodios: <input type="text" name="episodios" th:field="*{episodios}"> <br />
         Classificacao: <input type="text" name="classificacao" th:field="*{classificacao}"> <br />
