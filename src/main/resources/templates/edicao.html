@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+
+    <div th:replace="fragments/commons :: header"></div>
+
+
     <h2>Edição de Animes</h2>
     <form method="post" th:object="${anime}" th:action="@{/salvar}">
       <input type="text" readonly name="id" th:field="*{id}"> <br />
@@ -16,5 +20,8 @@
       Classificacao: <input type="text" name="classificacao" th:field="*{classificacao}"> <br />
       <button type="submit">Enviar</button>
     </form>
+
+    <div th:replace="fragments/commons :: footer"></div>
+
 </body>
 </html>

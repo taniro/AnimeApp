@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+      <header th:fragment="header">
+          <h1> Página dos animes superlegais!!</h1>
+      </header>
+
+      <footer th:fragment="footer">
+        <h6> Rodapé da minha página, 2021</h6>
+      </footer>
+
+      <div th:fragment="menu(username)">
+          <p th:text="${username}"></p>
+      </div>
+
+      <div th:fragment="statusCadastro(status)">
+          <p th:switch="${status}">
+            <span th:case="'CADASTRADO'">CADATRADO</span>
+            <span th:case="1">ALTERADO</span>
+            <span th:case="'EXCLUIDO'">EXCLUIDO</span>
+            <span th:case="*">CANCELADO</span>
+          </p>
+      </div>
+
+      <div th:fragment="statusUsuario(status)">
+        <p>
+          <span th:if="${status == 'NOVO'}"> Bem vindo!</span>
+          <span th:unless="${status == 'NOVO'}"> Voltou!!</span>
+        </p>
+      </div>
+
+      <div th:fragment="displayName(name)">
+        <p th:text="${name} ?: 'ANONIMO'"></p>
+      </div>
+</html>
