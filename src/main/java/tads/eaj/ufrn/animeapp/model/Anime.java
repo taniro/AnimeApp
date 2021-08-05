@@ -28,4 +28,5 @@ public class Anime {
 	Integer temporadas;
 	Integer episodios;
 	String classificacao;
+	String imagemUri;
 }

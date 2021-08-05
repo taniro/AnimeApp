@@ -18,7 +18,7 @@
 
     <h2 th:onclick="mensagem()">Cadastro de Animes</h2>
 
-    <form method="post" th:object="${anime}" th:action="@{/salvar}">
+    <form method="post" th:object="${anime}" th:action="@{/salvar}" enctype="multipart/form-data">
 
         Genero: <input type="text" name="genero" th:field="*{genero}"> <br />
         Título: <input type="text" name="titulo" th:field="*{titulo}"> <br />
@@ -28,6 +28,7 @@
         Temporadas: <input type="text" name="temporadas" th:field="*{temporadas}"> <br />
         Episodios: <input type="text" name="episodios" th:field="*{episodios}"> <br />
         Classificacao: <input type="text" name="classificacao" th:field="*{classificacao}"> <br />
+        Imagem: <input type="file" name="file"/><br />
         <button type="submit">Enviar</button>
     </form>
 

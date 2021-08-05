@@ -31,6 +31,7 @@
 		<td th:text="${anime.classificacao}">Classificacao</td>
 		<td><a th:href="@{'/deletar/' + ${anime.id}}">Deletar </a></td>
 		<td><a th:href="@{'/editar/' + ${anime.id}}">Editar </a></td>
+		<td><img width="100px" th:src="@{'/images/' + ${anime.getImagemUri()}}" alt="imagem"/></td>
 	</tr>
 </table>
 

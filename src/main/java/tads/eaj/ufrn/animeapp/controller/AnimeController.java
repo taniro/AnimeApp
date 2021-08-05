@@ -5,14 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tads.eaj.ufrn.animeapp.model.Anime;
 import tads.eaj.ufrn.animeapp.service.AnimeService;
+import tads.eaj.ufrn.animeapp.service.FileStorageService;
 
 import javax.validation.Valid;
 
@@ -20,6 +19,12 @@ import javax.validation.Valid;
 public class AnimeController {
 
 	AnimeService service;
+	FileStorageService fileStorageService;
+
+	@Autowired
+	public void setFileStorageService(FileStorageService fileStorageService) {
+		this.fileStorageService = fileStorageService;
+	}
 
 	@Autowired
 	public void setService(AnimeService service) {
@@ -41,11 +46,21 @@ public class AnimeController {
 	}
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public String doSalvar(@ModelAttribute @Valid Anime anime, Errors errors, RedirectAttributes redirectAttributes){
+	public String doSalvar(@ModelAttribute @Valid Anime anime, Errors errors, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes){
 		if (errors.hasErrors()){
 			return "cadastro";
 		}else{
+
+			/*
+			System.out.println(file.getOriginalFilename());
+			System.out.println(file.getContentType());
+			System.out.println(file.getSize());
+			 */
+
+			anime.setImagemUri(file.getOriginalFilename());
 			service.save(anime);
+			fileStorageService.save(file);
+
 			redirectAttributes.addAttribute("msg", "Cadastro realizado com sucesso");
 			return "redirect:/";
 		}
