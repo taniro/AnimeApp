@@ -21,8 +21,8 @@ Adaptado de https://www.bezkoder.com/spring-boot-file-upload/
 @Service
 public class FileStorageService{
 
-	//private final Path root = Paths.get("src/main/webapp/WEB-INF/images");
-	private final Path root = Paths.get("images");
+	private final Path root = Paths.get("src/main/webapp/WEB-INF/images");
+	//private final Path root = Paths.get("images");
 
 
 	public void init() {
